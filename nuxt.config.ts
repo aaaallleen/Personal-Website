@@ -1,6 +1,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
+
   app: {
     head: {
       title: 'Allen Lu - Portfolio',
@@ -16,14 +17,19 @@ export default defineNuxtConfig({
       ]
     }
   },
+
   css: ['~/assets/css/main.css', '~/assets/css/tailwind.css'],
   modules: ['@nuxtjs/tailwindcss'],
+
   typescript: {
     strict: true
   },
+
   vite: {
     define: {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }
-  }
+  },
+
+  compatibilityDate: '2024-08-29'
 })
