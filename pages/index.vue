@@ -27,12 +27,14 @@
         <div class="section-content flex">
           <div class="w-1/3 pr-8 sticky-sidebar">
             <div class="sticky-content">
-              <h2 class="text-l font-semibold mb-4">Curriculum Vitae</h2>
-              <h2 class="text-3xl font-semibold mb-4 font-times-new-roman text-black">More of my credentials</h2>
-              <p class="text-lg">
-                Here is my 
-                <NuxtLink to="/resume" class="text-blue-600 hover:text-blue-800 underline">Curriculum Vitae</NuxtLink>.
-              </p>
+              <div class="cv-section">
+                <h2 class="text-l font-semibold mb-4">Curriculum Vitae</h2>
+                <h2 class="text-3xl font-semibold mb-4 font-times-new-roman text-black">More of my credentials</h2>
+                <p class="text-lg">
+                  Here is my 
+                  <NuxtLink to="/resume" class="text-blue-600 hover:text-blue-800 underline">Curriculum Vitae</NuxtLink>.
+                </p>
+              </div>
             </div>
           </div>
           <div class="w-2/3 pl-8">
@@ -192,19 +194,26 @@ const educationTimelineItems = ref<EducationTimelineItem[]>([
 }
 
 #resume {
-  @apply items-start pt-32; /* Increased padding-top to push content further down */
+  @apply items-start pt-32;
 }
 
 .sticky-sidebar {
-  height: calc(100vh - 8rem); /* Adjust this value to create space at the top */
+  height: auto;
+  min-height: 100vh;
   position: relative;
 }
 
 .sticky-content {
   position: sticky;
-  top: 8rem; /* Increased top value to push content down */
-  max-height: calc(100vh - 8rem); /* Adjust max-height to match the new top value */
+  top: 40%;
+  transform: translateY(-50%);
+  max-height: calc(100vh - 4rem);
   overflow-y: auto;
+  padding-bottom: 2rem;
+}
+
+.cv-section {
+  margin-top: 120%;
 }
 
 #home {
