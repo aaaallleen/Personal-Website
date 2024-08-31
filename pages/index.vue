@@ -18,12 +18,19 @@
 
       <section id="about" class="section bg-honeyPeach">
         <div class="section-content">
-          <h2 class="text-3xl font-semibold mb-4">About Me</h2>
-          <p>{{ about }}</p>
+          <h2 class="text-3xl font-semibold mb-8 text-center">About Me</h2>
+          <div class="flex">
+            <div class="w-1/3 pr-8">
+              <img src="~/assets/images/about.jpg" alt="About Me" class="w-full h-auto object-cover rounded-lg" />
+            </div>
+            <div class="w-2/3">
+              <p class="text-lg">{{ about }}</p>
+            </div>
+          </div>
         </div>
       </section>
-
-      <section id="resume" class="section bg-peachPuree">
+          
+      <section id="resume" class="section bg-peachPuree relative">
         <div class="section-content flex">
           <div class="w-1/3 pr-8 sticky-sidebar">
             <div class="sticky-content">
@@ -116,7 +123,7 @@ import type { Project, BlogPost, TimelineItem, EducationTimelineItem } from '~/t
 
 const name = ref('Chia-En (Allen) Lu')
 const tagline = ref('CS Masters student | Machine Learning Engineer | Software Developer')
-const about = ref('I am a passionate CS student with a love for web development...')
+const about = ref('cool things about me. I have a long dick')
 const email = ref('chiaen119@gmail.com')
 
 const projects = ref<Project[]>([
@@ -193,8 +200,12 @@ const educationTimelineItems = ref<EducationTimelineItem[]>([
   @apply max-w-7xl w-full;
 }
 
+#about {
+  @apply pt-32 pb-16; /* Increased top padding */
+}
+
 #resume {
-  @apply items-start pt-32;
+  @apply items-start pt-32; /* Increased top padding */
 }
 
 .sticky-sidebar {
@@ -205,15 +216,15 @@ const educationTimelineItems = ref<EducationTimelineItem[]>([
 
 .sticky-content {
   position: sticky;
-  top: 40%;
-  transform: translateY(-50%);
-  max-height: calc(100vh - 4rem);
+  top: 96px; /* Adjusted to account for navbar height */
+  transform: translateY(-30%);
+  max-height: calc(100vh - 2rem);
   overflow-y: auto;
   padding-bottom: 2rem;
 }
 
 .cv-section {
-  margin-top: 120%;
+  margin-top: 100%;
 }
 
 #home {
@@ -230,7 +241,7 @@ const educationTimelineItems = ref<EducationTimelineItem[]>([
 }
 
 .timeline {
-  @apply relative py-5 mt-8; /* Add margin-top to push timeline down */
+  @apply relative py-5 mt-8;
 }
 
 .timeline::before {
@@ -293,4 +304,3 @@ const educationTimelineItems = ref<EducationTimelineItem[]>([
   }
 }
 </style>
-This is my current code, I want to push the part of the "Here is my Curriculum Vitae" down but keep the timeline at the same place 
