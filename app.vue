@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Project, BlogPost } from '~/types'
+// import { Project, BlogPost, TimelineItem, EducationTimelineItem } from '~/types/type'
 
 // Any app-wide setup can go here
 </script>

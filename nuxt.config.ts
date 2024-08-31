@@ -1,7 +1,8 @@
+import { Static } from "vue";
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
-
   app: {
     head: {
       title: 'Allen Lu - Portfolio',
