@@ -23,8 +23,4 @@ logs
 .env.*
 !.env.example
 
-# Ignore assets/images directory
-assets/images/
 
-# Ignore public/pdfs directory
-public/pdfs/

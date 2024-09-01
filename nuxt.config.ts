@@ -1,9 +1,11 @@
-import { Static } from "vue";
-
 export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
+  target: 'static',
+
   app: {
+    baseURL: '/Personal-Website/', // Matches your GitHub repo name
+    buildAssetsDir: '_nuxt/', // Default, but explicitly set
     head: {
       title: 'Allen Lu - Portfolio',
       htmlAttrs: { lang: 'en' },
@@ -13,7 +15,7 @@ export default defineNuxtConfig({
         { hid: 'description', name: 'description', content: 'Personal Portfolio for Chia-En Lu' }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'icon', type: 'image/x-icon', href: '/Personal-Website/favicon.ico' },
         { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' }
       ]
     }
@@ -32,5 +34,11 @@ export default defineNuxtConfig({
     }
   },
 
-  compatibilityDate: '2024-08-29'
+  nitro: {
+    preset: 'github-pages'
+  },
+
+  generate: {
+    fallback: '404.html'
+  }
 })
