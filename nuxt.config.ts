@@ -29,6 +29,7 @@ export default defineNuxtConfig({
   },
 
   vite: {
+    assetsInclude: ['**/*.pdf'],
     define: {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }

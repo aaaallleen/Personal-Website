@@ -18,17 +18,45 @@
 
       <section id="about" class="section bg-honeyPeach">
         <div class="section-content">
-          <h2 class="text-3xl font-semibold mb-8 text-center">About Me</h2>
+          <h2 class="text-3xl font-semibold mb-6 text-center">About Me</h2>
           <div class="flex">
             <div class="w-1/3 pr-8">
-              <img src="~/assets/images/about.jpg" alt="About Me" class="w-full h-auto object-cover rounded-lg" />
+              <img src="~/assets/images/about.jpg" alt="About Me" class="w-full h-auto object-cover rounded-lg mb-4" />
+              <div class="text-center">
+                <p class="mb-2 font-times-new-roman">I am actively seeking 2025 summer internships!</p>
+                <p class="mb-2 font-times-new-roman">
+                  Connect with me on 
+                  <a href="https://linkedin.com/in/aaaallleen119" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline font-times-new-roman">
+                    LinkedIn
+                  </a>
+                </p>
+                <p class = "mb-2 font-times-new-roman">
+                  Contact me via 
+                  <a href="mailto:chiaen119@gmail.com" class="text-blue-600 hover:text-blue-800 underline font-times-new-roman">
+                    chiaen119@gmail.com
+                  </a>
+                </p>
+              </div>
             </div>
             <div class="w-2/3">
-              <p class="text-lg">{{ about }}</p>
+              <p class="text-lg font-times-new-roman mt-12">{{ about }}</p>
+              <p class="text-lg font-times-new-roman flex flex-wrap mt-12">I am a driven worker that strives under pressure. I work well both individually and as a team. My areas of expertise are computer science, machine learning application, and design. Below are highlights of my technical skills:</p>
+              <div class="flex flex-wrap justify-between mb-6 mt-12">
+                <div v-for="skill in skillsWithLevels" :key="skill.name" class="w-1/2 sm:w-1/4 mb-4">
+                  <CircularProgress :percentage="skill.level" :skillName="skill.name" />
+                </div>
+              </div>
+              
+              <div class="flex flex-wrap">
+                <span v-for="skill in otherSkills" :key="skill" class="bg-[#D8C8BD] text-gray-800 px-3 py-1 rounded-full mr-2 mb-2 text-sm">
+                  {{ skill }}
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </section>
+
           
       <section id="resume" class="section bg-peachPuree relative">
         <div class="section-content flex">
@@ -121,9 +149,10 @@ import { ref } from 'vue'
 import { Github, Linkedin, Mail, Briefcase, GraduationCap } from 'lucide-vue-next'
 import type { Project, BlogPost, TimelineItem, EducationTimelineItem } from '~/types/type'
 
+
 const name = ref('Chia-En (Allen) Lu')
 const tagline = ref('CS Masters student | Machine Learning Engineer | Software Developer')
-const about = ref('cool things about me. I have a long dick')
+const about = ref("As a passionate master's student in Computer Science at UC San Diego (class of 2026), I'm on the hunt for a cutting-edge internship in the Quant/Tech industry. My journey began at National Tsing Hua University, where I earned my B.S. in Computer Science (class of 2023), minoring in Arts and Design. My passion lies in pushing the boundaries of machine learning deployment. I've already dived deep into diverse fields like healthcare, natural language processing, and recommendation systems – and I'm hungry for more!")
 const email = ref('chiaen119@gmail.com')
 
 const projects = ref<Project[]>([
@@ -142,26 +171,38 @@ const socialLinks = [
   { name: 'Email', url: 'mailto:chiaen119@gmail.com', icon: Mail },
 ]
 
+
+const skillsWithLevels = ref([
+  { name: 'Python', level: 90 },
+  { name: 'C/C++', level: 80 },
+  { name: 'JavaScript', level: 75 },
+  { name: 'TypeScript', level: 60 },
+])
+
+const otherSkills = ref([
+  'Vue.js', 'Node.js', 'Machine Learning', 'Deep Learning', 'SQL', 'Git', 'Docker', 'Kubernetes',
+  'TensorFlow', 'PyTorch', 'Scikit-learn', 'Pandas', 'NumPy'
+])
 const workTimelineItems = ref<TimelineItem[]>([
   {
     title: 'Machine Learning Engineering Intern',
     company: 'Taiwan AI Labs',
     date: 'June 2024 - August 2024',
-    description: 'Worked in blockchain company. Performed network performance test between AWS centers located in Asia. Created GOPAX API monitoring tool that would test GOPAX API, create error digest, then would send email alert. Studied zcash transaction after Overwinter Hardfork.',
+    description: 'Developed a neural machine transaltion model to translate a Austronesian language - Truku. Utilized LLM and retrieval methods to augment domain data.',
     icon: Briefcase
   },
   {
     title: 'Research Assistant',
     company: 'Academia Sinica',
     date: 'July 2023 - November 2023',
-    description: 'Updated python package called DNAplotlib, a project under National Resource for Network Biology. Integrated pySBOL2 which supports hierarchical and complex interaction visualizion of synthetic biocircuits. Rendered Synthetic Biology Open Language (SBOL) visual standard glyph in python.',
+    description: 'Under the supervision of Prof. De-Nian Yang, I developed a query system on top of a large-scale knowledge graph. The system is able to answer complex queries with high accuracy. The system could also match two knowledge graphs based on their schema, entity, and relation.',
     icon: Briefcase
   },
   {
     title: 'Research Assistant',
     company: 'National Tsing Hua University Human Machine Interaction Lab',
     date: 'April 2023 - December 2023',
-    description: 'Developed iOS app called DoctorMi that visualizes user health diagnosis data based on breath analysis. Supports features such as daily health data check, real time breath analysis, looking at other health data, and sharing health data by email. Originally a final project for the class CS193P.',
+    description: 'Under the supervision of Prof. Po-Chi Kuo, I designed a novel system that annotates breast mammogram images for regions highly suspisious of breast cancer. This system annotates breast masses and calcifications with a high accuracy.',
     icon: Briefcase
   },
   {
@@ -176,17 +217,17 @@ const workTimelineItems = ref<TimelineItem[]>([
 const educationTimelineItems = ref<EducationTimelineItem[]>([
   {
     icon: GraduationCap,
-    date: 'September 2022 - Present',
-    institution: 'Stanford University',
-    degree: 'Master of Science in Computer Science',
-    description: 'Focusing on Machine Learning and Artificial Intelligence. Participating in research projects related to natural language processing.'
+    date: 'September 2024 - June 2026 (Projected)',
+    institution: 'University of California, San Diego',
+    degree: 'Master of Science in Computer Science and Engineering',
+    description: 'Focusing on Machine Learning and Artificial Intelligence.'
   },
   {
     icon: GraduationCap,
-    date: 'September 2018 - June 2022',
+    date: 'September 2019 - June 2023',
     institution: 'National Tsing Hua University',
     degree: 'Bachelor of Science in Computer Science',
-    description: 'Graduated with honors. Completed a thesis on optimizing neural network architectures for edge devices.'
+    description: 'Participated in the 2022 ICCAD Contest where I achieved a Global Top 10 in the contest. Focused on Machine Learning and Artificial Intelligence.'
   },
 ])
 </script>
@@ -201,7 +242,7 @@ const educationTimelineItems = ref<EducationTimelineItem[]>([
 }
 
 #about {
-  @apply pt-32 pb-16; /* Increased top padding */
+  @apply pt-8 pb-32 ; /* Increased top padding */
 }
 
 #resume {
@@ -284,6 +325,15 @@ const educationTimelineItems = ref<EducationTimelineItem[]>([
 .timeline-description {
   @apply text-sm;
 }
+
+.font-times-new-roman {
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+.font-gothic-neo {
+  font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+}
+
 
 @media (max-width: 767px) {
   .timeline::before {
