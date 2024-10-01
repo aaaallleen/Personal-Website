@@ -4,11 +4,11 @@
 
     <div>
       <section id="home" class="section bg-cover bg-center flex flex-col items-center justify-center text-center">
-        <div class="section-content bg-grey-700 bg-opacity-70 p-8 rounded-lg">
-          <h1 class="text-6xl font-bold mb-4 font-gothic-neo text-white">{{ name }}</h1>
-          <p class="text-2xl mb-6 font-times-new-roman text-white">{{ tagline }}</p>
-          <p class="text-xl mb-6 font-times-new-roman text-white">background pc: The Dune by Allen Lu</p>
-          <div class="flex justify-center space-x-20">
+        <div class="section-content bg-grey-700 bg-opacity-70 p-4 sm:p-8 rounded-lg max-w-4xl mx-auto">
+          <h1 class="text-4xl sm:text-6xl font-bold mb-4 font-gothic-neo text-white">{{ name }}</h1>
+          <p class="text-xl sm:text-2xl mb-6 font-times-new-roman text-white">{{ tagline }}</p>
+          <p class="text-lg sm:text-xl mb-6 font-times-new-roman text-white">background pc: The Dune by Allen Lu</p>
+          <div class="flex justify-center space-x-4 sm:space-x-20">
             <a v-for="link in socialLinks" :key="link.name" :href="link.url" target="_blank" rel="noopener noreferrer" class="btn">
               <component :is="link.icon" />
             </a>
@@ -18,9 +18,9 @@
 
       <section id="about" class="section bg-honeyPeach">
         <div class="section-content">
-          <h2 class="text-3xl font-semibold mb-6 text-center">About Me</h2>
-          <div class="flex">
-            <div class="w-1/3 pr-8">
+          <h2 class="text-2xl sm:text-3xl font-semibold mb-6 text-center">About Me</h2>
+          <div class="flex flex-col lg:flex-row">
+            <div class="w-full lg:w-1/3 pr-0 lg:pr-8 mb-8 lg:mb-0">
               <img src="~/assets/images/about.jpg" alt="About Me" class="w-full h-auto object-cover rounded-lg mb-4" />
               <div class="text-center">
                 <p class="mb-2 font-times-new-roman">I am actively seeking 2025 summer internships!</p>
@@ -30,7 +30,7 @@
                     LinkedIn
                   </a>
                 </p>
-                <p class = "mb-2 font-times-new-roman">
+                <p class="mb-2 font-times-new-roman">
                   Contact me via 
                   <a href="mailto:chiaen119@gmail.com" class="text-blue-600 hover:text-blue-800 underline font-times-new-roman">
                     chiaen119@gmail.com
@@ -38,10 +38,10 @@
                 </p>
               </div>
             </div>
-            <div class="w-2/3">
-              <p class="text-lg font-times-new-roman mt-12">{{ about }}</p>
-              <p class="text-lg font-times-new-roman flex flex-wrap mt-12">I am a driven worker that strives under pressure. I work well both individually and as a team. My areas of expertise are computer science, machine learning application, and design. Below are highlights of my technical skills:</p>
-              <div class="flex flex-wrap justify-between mb-6 mt-12">
+            <div class="w-full lg:w-2/3">
+              <p class="text-lg font-times-new-roman mt-4 lg:mt-12">{{ about }}</p>
+              <p class="text-lg font-times-new-roman flex flex-wrap mt-8 lg:mt-12">I am a driven worker that strives under pressure. I work well both individually and as a team. My areas of expertise are computer science, machine learning application, and design. Below are highlights of my technical skills:</p>
+              <div class="flex flex-wrap justify-between mb-6 mt-8 lg:mt-12">
                 <div v-for="skill in skillsWithLevels" :key="skill.name" class="w-1/2 sm:w-1/4 mb-4">
                   <CircularProgress :percentage="skill.level" :skillName="skill.name" />
                 </div>
@@ -57,14 +57,13 @@
         </div>
       </section>
 
-          
       <section id="resume" class="section bg-peachPuree relative">
-        <div class="section-content flex">
-          <div class="w-1/3 pr-8 sticky-sidebar">
+        <div class="section-content flex flex-col lg:flex-row">
+          <div class="w-full lg:w-1/3 pr-0 lg:pr-8 mb-8 lg:mb-0">
             <div class="sticky-content">
               <div class="cv-section">
                 <h2 class="text-l font-semibold mb-4">Curriculum Vitae</h2>
-                <h2 class="text-3xl font-semibold mb-4 font-times-new-roman text-black">More of my credentials</h2>
+                <h2 class="text-2xl sm:text-3xl font-semibold mb-4 font-times-new-roman text-black">More of my credentials</h2>
                 <p class="text-lg">
                   Here is my 
                   <NuxtLink to="/resume" class="text-blue-600 hover:text-blue-800 underline">Curriculum Vitae</NuxtLink>.
@@ -72,8 +71,8 @@
               </div>
             </div>
           </div>
-          <div class="w-2/3 pl-8">
-            <h2 class="text-3xl font-semibold mb-4 text-[#d45b61]">Work Experience</h2>
+          <div class="w-full lg:w-2/3 lg:pl-8">
+            <h2 class="text-2xl sm:text-3xl font-semibold mb-4 text-[#d45b61]">Work Experience</h2>
             <div class="timeline">
               <div v-for="(item, index) in workTimelineItems" :key="index" class="timeline-item">
                 <div class="timeline-icon">
@@ -90,7 +89,7 @@
               </div>
             </div>
             
-            <h2 class="text-3xl font-semibold mb-4 mt-8 text-[#4a90e2]">Education</h2>
+            <h2 class="text-2xl sm:text-3xl font-semibold mb-4 mt-8 text-[#4a90e2]">Education</h2>
             <div class="timeline">
               <div v-for="(item, index) in educationTimelineItems" :key="index" class="timeline-item">
                 <div class="timeline-icon">
@@ -112,19 +111,31 @@
 
       <section id="projects" class="section bg-peachPink">
         <div class="section-content">
-          <h2 class="text-3xl font-semibold mb-4">Projects</h2>
-          <ul class="space-y-4">
-            <li v-for="project in projects" :key="project.id" class="bg-white bg-opacity-50 rounded-lg p-4">
-              <h3 class="text-lg font-medium">{{ project.name }}</h3>
-              <p>{{ project.description }}</p>
-            </li>
-          </ul>
+          <h2 class="text-2xl sm:text-3xl font-semibold mb-8 text-center">Projects</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div 
+              v-for="project in projects" 
+              :key="project.id" 
+              class="bg-white bg-opacity-50 rounded-lg p-6 aspect-square flex flex-col justify-between cursor-pointer transform transition-transform duration-300 hover:scale-105"
+              @click="openProject(project)"
+            >
+              <h3 class="text-xl font-semibold mb-4">{{ project.name }}</h3>
+              <p class="text-sm mb-4 flex-grow">{{ truncateDescription(project.description) }}</p>
+              <div class="flex flex-wrap">
+                <span v-for="tech in project.technologies" :key="tech" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-full mr-2 mb-2 text-xs">
+                  {{ tech }}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
+      <ProjectPopup :show="showPopup" :Project="selectedProject" @close="closePopup" />
+
       <section id="blog" class="section bg-peachPearl">
         <div class="section-content">
-          <h2 class="text-3xl font-semibold mb-4">Blog Posts</h2>
+          <h2 class="text-2xl sm:text-3xl font-semibold mb-4">Blog Posts</h2>
           <ul class="space-y-4">
             <li v-for="post in blogPosts" :key="post.id" class="bg-white bg-opacity-50 rounded-lg p-4">
               <h3 class="text-lg font-medium">{{ post.title }}</h3>
@@ -136,7 +147,7 @@
 
       <section id="contact" class="section bg-pristine">
         <div class="section-content">
-          <h2 class="text-3xl font-semibold mb-4">Contact Me</h2>
+          <h2 class="text-2xl sm:text-3xl font-semibold mb-4">Contact Me</h2>
           <p>Email: {{ email }}</p>
         </div>
       </section>
@@ -148,16 +159,38 @@
 import { ref } from 'vue'
 import { Github, Linkedin, Mail, Briefcase, GraduationCap } from 'lucide-vue-next'
 import type { Project, BlogPost, TimelineItem, EducationTimelineItem } from '~/types/type'
-
+import ProjectPopup from '~/components/ProjectPopup.vue'
 
 const name = ref('Chia-En (Allen) Lu')
 const tagline = ref('CS Masters student | Machine Learning Engineer | Software Developer')
 const about = ref("As a passionate master's student in Computer Science at UC San Diego (class of 2026), I'm on the hunt for a cutting-edge internship in the Quant/Tech industry. My journey began at National Tsing Hua University, where I earned my B.S. in Computer Science (class of 2023), minoring in Arts and Design. My passion lies in pushing the boundaries of machine learning deployment. I've already dived deep into diverse fields like healthcare, natural language processing, and recommendation systems – and I'm hungry for more!")
 const email = ref('chiaen119@gmail.com')
 
-const projects = ref<Project[]>([
-  { id: 1, name: 'Project 1', description: 'Description of project 1' },
-  { id: 2, name: 'Project 2', description: 'Description of project 2' },
+const projects = ref([
+{ 
+    id: 1, 
+    name: 'Project 1', 
+    description: 'Description of project 1.',
+    technologies: ['Vue.js', 'TypeScript', 'Tailwind CSS'],
+    details: [
+      { type: 'text', content: 'This is a detailed explanation of Project 1.' },
+      { type: 'image', content: 'about.jpg', caption: 'Project 1 Screenshot' },
+      { type: 'link', content: 'GitHub Repository', url: 'https://github.com/aaaallleen' },
+      { type: 'techDetail', content: 'This project uses advanced Vue.js features like...', caption: 'Technical Details' }
+    ]
+  },
+  { 
+    id: 2, 
+    name: 'Project 2', 
+    description: 'Description of project 2. Another longer description for demonstration purposes.',
+    details: [
+      'Developed custom algorithm',
+      'Created responsive design',
+      'Implemented CI/CD pipeline'
+    ],
+    technologies: ['React', 'Node.js', 'MongoDB']
+  },
+  // Add more projects as needed
 ])
 
 const blogPosts = ref<BlogPost[]>([
@@ -230,11 +263,30 @@ const educationTimelineItems = ref<EducationTimelineItem[]>([
     description: 'Participated in the 2022 ICCAD Contest where I achieved a Global Top 10 in the contest. Focused on Machine Learning and Artificial Intelligence.'
   },
 ])
+
+
+const showPopup = ref(false)
+const selectedProject = ref<Project | null>(null)
+
+const openProject = (project: Project) => {
+  selectedProject.value = project
+  showPopup.value = true
+}
+
+const closePopup = () => {
+  showPopup.value = false
+}
+
+const truncateDescription = (description: string, maxLength: number = 100): string => {
+  if (description.length <= maxLength) return description
+  return description.slice(0, maxLength) + '...'
+}
+
 </script>
 
 <style scoped>
 .section {
-  @apply min-h-screen flex items-center justify-center p-8;
+  @apply min-h-screen flex items-center justify-center p-4 sm:p-8;
 }
 
 .section-content {
@@ -242,30 +294,23 @@ const educationTimelineItems = ref<EducationTimelineItem[]>([
 }
 
 #about {
-  @apply pt-8 pb-32 ; /* Increased top padding */
+  @apply pt-8 pb-16 sm:pb-32;
 }
 
 #resume {
-  @apply items-start pt-32; /* Increased top padding */
+  @apply items-start pt-16 sm:pt-32;
 }
 
 .sticky-sidebar {
-  height: auto;
-  min-height: 100vh;
-  position: relative;
+  @apply lg:h-auto lg:min-h-screen lg:relative;
 }
 
 .sticky-content {
-  position: sticky;
-  top: 96px; /* Adjusted to account for navbar height */
-  transform: translateY(-30%);
-  max-height: calc(100vh - 2rem);
-  overflow-y: auto;
-  padding-bottom: 2rem;
+  @apply lg:sticky lg:top-24 lg:transform lg:-translate-y-1/4 lg:max-h-[calc(100vh-2rem)] lg:overflow-y-auto lg:pb-8;
 }
 
 .cv-section {
-  margin-top: 100%;
+  @apply lg:mt-[100%];
 }
 
 #home {
@@ -274,7 +319,7 @@ const educationTimelineItems = ref<EducationTimelineItem[]>([
 }
 
 .btn {
-  @apply inline-flex items-center justify-center w-12 h-12 rounded-full bg-gray-500 text-white transition-all duration-200;
+  @apply inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-500 text-white transition-all duration-200;
 }
 
 .btn:hover {
@@ -287,11 +332,11 @@ const educationTimelineItems = ref<EducationTimelineItem[]>([
 
 .timeline::before {
   content: '';
-  @apply absolute w-0.5 bg-gray-700 top-8 bottom-0 left-1/2 -ml-px;
+  @apply absolute w-0.5 bg-gray-700 top-8 bottom-0 left-10 sm:left-1/2 -ml-px;
 }
 
 .timeline-item {
-  @apply py-5 relative flex justify-between;
+  @apply py-5 relative flex flex-col sm:flex-row sm:justify-between;
 }
 
 .timeline-item:first-child {
@@ -299,15 +344,15 @@ const educationTimelineItems = ref<EducationTimelineItem[]>([
 }
 
 .timeline-icon {
-  @apply absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white border-2 border-gray-700 flex items-center justify-center z-10;
+  @apply absolute left-10 sm:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white border-2 border-gray-700 flex items-center justify-center z-10;
 }
 
 .timeline-content {
-  @apply w-5/12 pr-5 text-right;
+  @apply w-full sm:w-5/12 pl-20 sm:pl-0 sm:pr-5 text-left sm:text-right mb-4 sm:mb-0;
 }
 
 .timeline-details {
-  @apply w-5/12 pl-5;
+  @apply w-full sm:w-5/12 pl-20 sm:pl-5;
 }
 
 .timeline-date {
@@ -327,30 +372,28 @@ const educationTimelineItems = ref<EducationTimelineItem[]>([
 }
 
 .font-times-new-roman {
-    font-family: 'Times New Roman', Times, serif;
-  }
-  
+  font-family: 'Times New Roman', Times, serif;
+}
+
 .font-gothic-neo {
   font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
 }
 
-
-@media (max-width: 767px) {
+@media (max-width: 639px) {
   .timeline::before {
-    @apply left-10;
+    @apply left-6;
   }
   
   .timeline-icon {
-    @apply left-10 ml-0;
+    @apply left-6;
   }
   
   .timeline-content,
   .timeline-details {
-    @apply w-full pl-20 text-left;
+    @apply pl-16;
   }
-  
-  .timeline-date {
-    @apply -top-2.5;
-  }
+}
+.aspect-square {
+  aspect-ratio: 1 / 1;
 }
 </style>
