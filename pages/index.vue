@@ -174,7 +174,7 @@ const projects = ref([
     technologies: ['Vue.js', 'TypeScript', 'Tailwind CSS'],
     details: [
       { type: 'text', content: 'This is a detailed explanation of Project 1.' },
-      { type: 'image', content: 'about.jpg', caption: 'Project 1 Screenshot' },
+      { type: 'image', content: '', caption: 'Project 1 Screenshot' },
       { type: 'link', content: 'GitHub Repository', url: 'https://github.com/aaaallleen' },
       { type: 'techDetail', content: 'This project uses advanced Vue.js features like...', caption: 'Technical Details' }
     ]
@@ -217,6 +217,13 @@ const otherSkills = ref([
   'TensorFlow', 'PyTorch', 'Scikit-learn', 'Pandas', 'NumPy'
 ])
 const workTimelineItems = ref<TimelineItem[]>([
+  {
+    title: 'Graduate Researcher',
+    company: 'Swartz Center for Computational Neuroscience',
+    date: 'Sept. 2024 - Present',
+    description: 'Identifying the effectiveness of Large Language Models on cognitive tasks. How it performs similarly, differently compared to human brains.',
+    icon: Briefcase
+  },
   {
     title: 'Machine Learning Engineering Intern',
     company: 'Taiwan AI Labs',
